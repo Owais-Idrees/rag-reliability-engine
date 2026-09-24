@@ -17,6 +17,7 @@ A language model cannot recover evidence that retrieval never found. RAG Reliabi
 - Grounded extractive answers for deterministic offline operation
 - Evaluation runner with hit rate, MRR, precision@k, and citation coverage
 - FastAPI endpoints and an interactive Swagger UI
+- Interactive web workspace for queries, ranked evidence, and live evaluation metrics
 - Unit tests for chunking, ranking, citations, and evaluation
 - Docker support and a GitHub Actions test workflow
 
@@ -58,6 +59,8 @@ curl -X POST http://127.0.0.1:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"question":"Why evaluate retrieval separately?","top_k":3}'
 ```
+
+The product workspace is available at `http://127.0.0.1:8000/`. The included `render.yaml` can deploy the API and interface together as a Render Blueprint.
 
 Run tests:
 

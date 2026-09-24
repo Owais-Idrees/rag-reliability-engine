@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive retrieval quality workspace with BM25 ranking, citations and regression metrics." />
+  <title>RAG Reliability Engine</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header><a class="brand" href="/"><span>R²</span> RAG Reliability Engine</a><nav><a href="#workspace">Workspace</a><a href="#evaluation">Evaluation</a><a href="/docs">API</a></nav></header>
+  <main>
+    <section class="hero"><div class="eyebrow">RETRIEVAL ENGINEERING WORKSPACE</div><h1>Make RAG quality<br/><em>measurable.</em></h1><p>Inspect ranked evidence, stable citations and retrieval regressions before generation hides the errors.</p><div class="badges"><span>BM25 ranking</span><span>Grounded answers</span><span>Versioned evaluation</span></div></section>
+    <section id="workspace" class="workspace">
+      <div class="section-head"><div><span>LIVE PIPELINE</span><h2>Ask the knowledge base</h2></div><div id="health" class="status">Connecting…</div></div>
+      <form id="ask-form"><input id="question" value="Why should retrieval be evaluated separately from generation?" minlength="3" aria-label="Question"/><button>Run retrieval <b>→</b></button></form>
+      <div class="samples"><button data-q="How does chunk overlap improve retrieval?">Chunk overlap</button><button data-q="How should access control work before retrieval?">Security controls</button><button data-q="How does BM25 rank documents?">BM25 ranking</button></div>
+      <div id="result" class="result empty"><div class="loader"></div><p>Run a query to inspect the grounded answer and ranked evidence.</p></div>
+    </section>
+    <section id="evaluation" class="evaluation"><div><span class="eyebrow">REGRESSION SUITE</span><h2>Quality gates you can verify</h2><p>The included evaluation set measures whether expected evidence appears and how highly it ranks. These are retrieval metrics, not invented production claims.</p><button id="evaluate">Run evaluation</button></div><div id="metrics" class="metrics"><article><small>HIT RATE</small><strong>—</strong></article><article><small>MRR</small><strong>—</strong></article><article><small>PRECISION@3</small><strong>—</strong></article><article><small>CASES</small><strong>—</strong></article></div></section>
+  </main>
+  <footer><span>Built by Muhammad Owais Idrees</span><a href="https://github.com/Owais-Idrees/rag-reliability-engine">View source on GitHub ↗</a></footer>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

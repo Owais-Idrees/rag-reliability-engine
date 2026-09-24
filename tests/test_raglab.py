@@ -6,6 +6,8 @@ import unittest
 from raglab.chunking import chunk_text
 from raglab.engine import RAGEngine
 from raglab.evaluation import evaluate
+from fastapi.testclient import TestClient
+from raglab.api import app
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -45,6 +47,13 @@ class RetrievalTests(unittest.TestCase):
         self.assertEqual(metrics["cases"], 6)
         self.assertGreaterEqual(metrics["hit_rate"], 0.8)
         self.assertEqual(len(metrics["details"]), 6)
+
+
+class ProductWorkspaceTests(unittest.TestCase):
+    def test_workspace_and_health_are_served(self):
+        client = TestClient(app)
+        self.assertIn("RAG Reliability Engine", client.get("/").text)
+        self.assertEqual(client.get("/health").json()["retriever"], "bm25")
 
 
 if __name__ == "__main__":
