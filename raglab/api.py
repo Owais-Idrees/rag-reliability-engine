@@ -8,7 +8,7 @@ from .evaluation import evaluate
 
 ROOT = Path(__file__).resolve().parents[1]
 engine = RAGEngine(ROOT / "data" / "knowledge")
-app = FastAPI(title="RAG Reliability Lab", version="0.1.0")
+app = FastAPI(title="RAG Reliability Engine", version="0.1.0")
 
 
 class AskRequest(BaseModel):

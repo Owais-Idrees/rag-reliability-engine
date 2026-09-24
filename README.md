@@ -1,12 +1,12 @@
-# RAG Reliability Lab
+# RAG Reliability Engine
 
 An offline-first reference project for measuring retrieval quality before adding an LLM.
 
-Many RAG demos stop when an answer looks plausible. This project treats retrieval as a measurable system: documents are chunked, indexed with BM25, queried with citations, and scored against a small evaluation set using hit rate, mean reciprocal rank (MRR), precision@k, and citation coverage.
+Reliable RAG systems need more than plausible answers. This project treats retrieval as a measurable engineering system: documents are chunked, indexed with BM25, queried with citations, and scored against a versioned evaluation set using hit rate, mean reciprocal rank (MRR), precision@k, and citation coverage.
 
 ## Why this project exists
 
-A language model cannot recover evidence that retrieval never found. RAG Reliability Lab makes the retrieval layer visible and testable, so developers can compare chunking and ranking choices before spending money on model calls.
+A language model cannot recover evidence that retrieval never found. RAG Reliability Engine makes the retrieval layer visible and testable, so engineering teams can compare chunking and ranking choices before spending money on model calls.
 
 ## Features
 
@@ -14,7 +14,7 @@ A language model cannot recover evidence that retrieval never found. RAG Reliabi
 - Markdown and text document ingestion
 - Paragraph-aware chunking with source metadata
 - Search results with stable citations and relevance scores
-- Grounded extractive answers for an end-to-end offline demo
+- Grounded extractive answers for deterministic offline operation
 - Evaluation runner with hit rate, MRR, precision@k, and citation coverage
 - FastAPI endpoints and an interactive Swagger UI
 - Unit tests for chunking, ranking, citations, and evaluation
@@ -30,7 +30,7 @@ question -> tokenizer ------------+-> ranked evidence -> cited answer
 evaluation cases ------------------------------------> metrics
 ```
 
-The answer generator is deliberately extractive. It joins the best evidence sentences and attaches source citations. This keeps the demo deterministic and makes retrieval errors easy to diagnose. An LLM can be added later behind the same `SearchResult` contract.
+The answer generator is deliberately extractive. It joins the best evidence sentences and attaches source citations. This keeps behavior deterministic and makes retrieval errors easy to diagnose. An LLM can be added behind the same `SearchResult` contract.
 
 ## Quick start
 
@@ -80,7 +80,7 @@ Sources:
 
 `data/eval_cases.json` contains questions and the source documents expected in the top results. Add cases that represent real user questions, especially difficult paraphrases and questions with similar distractor documents.
 
-The included corpus is small and educational. Metrics from it demonstrate the workflow; they are not evidence of production performance.
+The included corpus is a compact regression fixture. Its metrics validate the evaluation pipeline and should be replaced with domain-specific documents and cases before a production rollout.
 
 ## Project structure
 
